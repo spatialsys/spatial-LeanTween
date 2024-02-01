@@ -1,3 +1,11 @@
+Spatial-LeanTween Fork
+=========
+This fork of [LeanTween](https://github.com/dentedpixel/LeanTween) makes small modifications to keep the package in-line with [Spatial's](https://spatial.io/) C# scripting limitations.
+## Changes:
+- Removed instances of `DontDestroyOnLoad`
+- Disabled `SceneManager.sceneLoaded` GUI Reset functionality
+- Removes instances of setting `gameobject.hideFlags`
+
 LeanTween
 =========
 
