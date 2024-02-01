@@ -344,23 +344,17 @@ public class LeanTween : MonoBehaviour
             _tweenEmpty.name = "~LeanTween";
             _tweenEmpty.AddComponent(typeof(LeanTween));
             _tweenEmpty.isStatic = true;
-#if !UNITY_EDITOR
-            _tweenEmpty.hideFlags = HideFlags.HideAndDontSave;
-#endif
-#if UNITY_EDITOR
-            if (Application.isPlaying)
-                DontDestroyOnLoad(_tweenEmpty);
-#else
-            DontDestroyOnLoad( _tweenEmpty );
-#endif
             for (int i = 0; i < maxTweens; i++)
             {
                 tweens[i] = new LTDescr();
             }
 
+            //! Currently disabled because spatial does not support multi-scene loading.
+            /*
 #if UNITY_5_4_OR_NEWER
             UnityEngine.SceneManagement.SceneManager.sceneLoaded += onLevelWasLoaded54;
 #endif
+            */
 
             sequences = new LTSeq[maxSimultaneousSequences];
 
@@ -390,11 +384,14 @@ public class LeanTween : MonoBehaviour
         LeanTween.update();
     }
 
-#if UNITY_5_4_OR_NEWER
-    private static void onLevelWasLoaded54(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode) { internalOnLevelWasLoaded(scene.buildIndex); }
-#else
-    public void OnLevelWasLoaded( int lvl ){ internalOnLevelWasLoaded( lvl ); }
-#endif
+    //! Currently disabled because spatial does not support multi-scene loading.
+    /*
+    #if UNITY_5_4_OR_NEWER
+        private static void onLevelWasLoaded54(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode) { internalOnLevelWasLoaded(scene.buildIndex); }
+    #else
+        public void OnLevelWasLoaded( int lvl ){ internalOnLevelWasLoaded( lvl ); }
+    #endif
+    */
 
     private static void internalOnLevelWasLoaded(int lvl)
     {
@@ -456,7 +453,7 @@ public class LeanTween : MonoBehaviour
 
                 if (tween.id == tweensFinishedIds[i])
                 {
-                    //              Debug.Log("removing tween:"+tween);
+                    //Debug.Log("removing tween:"+tween);
                     removeTween(j);
                     if (tween.hasExtraOnCompletes && tween.trans != null)
                         tween.callOnCompletes();
@@ -688,7 +685,7 @@ public class LeanTween : MonoBehaviour
             }
             else
             { // tween
-                // Debug.Log("uniqueId:"+uniqueId+ " id:"+backId +" action:"+(TweenAction)backType + " tweens[id].type:"+tweens[backId].type);
+              // Debug.Log("uniqueId:"+uniqueId+ " id:"+backId +" action:"+(TweenAction)backType + " tweens[id].type:"+tweens[backId].type);
                 if (tweens[backId].counter == backCounter)
                 {
                     if (callOnComplete && tweens[backId].optional.onComplete != null)

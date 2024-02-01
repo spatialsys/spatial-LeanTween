@@ -65,9 +65,6 @@ public class LeanTest : object {
 			tester.name = "~LeanTest";
 			LeanTester test = tester.AddComponent(typeof(LeanTester)) as LeanTester;
 			test.timeout = timeout;
-			#if !UNITY_EDITOR
-			tester.hideFlags = HideFlags.HideAndDontSave;
-			#endif
 		}
 	}
 	
