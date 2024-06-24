@@ -147,7 +147,7 @@ public class LTDescr
 		this.trans = null;
 		this.spriteRen = null;
 		this.passed = this.delay = this.lastVal = 0.0f;
-		this.hasUpdateCallback = this.useEstimatedTime = this.useFrames = this.hasInitiliazed = this.onCompleteOnRepeat = this.destroyOnComplete = this.onCompleteOnStart = this.useManualTime = this.hasExtraOnCompletes = this.toggle = false;
+		this.hasUpdateCallback = this.useEstimatedTime = this.useFrames = this.hasInitiliazed = this.onCompleteOnRepeat = this.destroyOnComplete = this.onCompleteOnStart = this.useManualTime = this.hasExtraOnCompletes = false;
 		this.easeType = LeanTweenType.linear;
 		this.loopType = LeanTweenType.once;
 		this.loopCount = 0;
